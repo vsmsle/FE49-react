@@ -25,17 +25,26 @@ let users: Users[] = [
 ];
 
 let nameOfUsers = users.map((item) => item.nameUser.split(" "));
+
 let initials = nameOfUsers.map((item) => item[0].charAt(0) + item[1].charAt(0));
 console.log(initials);
 
 export const Menu: React.FC<Props> = ({ onClick }) => {
-  const [isOpened, setIsOpen] = useState(false);
+  const [isOpened, setOpen] = useState(false);
+
+// const tabItems = [
+//     { id: "1", name: "All" },
+//     { id: "2", name: "My favorites" },
+//     { id: "3", name: "Popular" },
+//   ];
+
+// const [activeTabId, setActiveTabId] = useState(tabItems[0].id);
 
   return (
     <>
       <MenuWrap>
-        <MenuBurger type="button" onClick={() => setIsOpen(!isOpened)}>
-          <MenuImg src={isOpened ? closeMenu : burgerIcon} alt="menu" />
+        <MenuBurger type="button" onClick={() => setOpen(!isOpened)}>
+          <BurgerIcon src={isOpened ? closeMenu : burgerIcon} alt="menu" />
         </MenuBurger>
         <MenuSearch
           type="input"
@@ -99,8 +108,8 @@ const MenuBurger = styled.button`
   }
 `;
 
-const MenuImg = styled.img`
-  width: 30px;
+const BurgerIcon = styled.img`
+  width: 25px;
 `;
 
 const MenuSearch = styled.input`
